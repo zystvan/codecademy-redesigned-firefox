@@ -7,7 +7,7 @@ var self = require('sdk/self');
 // It will load some scripts whenever a "*.codecademy.com" URL is loaded
 pageMod.PageMod({
   include: "*.codecademy.com",
-  contentScriptFile: [self.data.url("./jquery.min.js"), self.data.url("./add-count.js"), self.data.url("./forum-link.js"), self.data.url("./magic.js"), self.data.url("./profile-updater.js"), self.data.url("qa-updater.js")]
+  contentScriptFile: [self.data.url("./jquery-1.11.1.min.js"), self.data.url("./add-count.js"), self.data.url("./forum-link.js"), self.data.url("./magic.js"), self.data.url("./profile-updater.js"), self.data.url("qa-updater.js")]
 });
 
 
