@@ -1,0 +1,13 @@
+{
+  "title": "Codecademy Redesigned",
+  "name": "codecademy_redesigned",
+  "version": "6.1.2",
+  "description": "Improves your experience on Codecademy, re-styling the Q&A forums into a sleeker look and adding many new useful features",
+  "main": "index.js",
+  "author": "Zeke Y",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT"
+}
