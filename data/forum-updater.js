@@ -45,11 +45,16 @@ function forumUpdater() {
     }
   }
   
-  $('#forum_search input[type="text"]').keydown(function(event) {
+  $('#forum_search input[type="text"]').keydown(function(event) {    
     var input = $('#forum_search input[type="text"]'),
         searchVal = input.val().toLowerCase(),
         posts = document.querySelectorAll('.forum_question'),
         postTitle = document.querySelectorAll('.title');
+    
+    if (input.val() == "" && event.which == 13) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
     
     for (var i = 0; i < posts.length; i++) {
       if (!searchVal || postTitle[i].textContent.toLowerCase().indexOf(searchVal) > -1) {
