@@ -4,7 +4,7 @@ function forumUpdater() {
     id = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1];
     
     $.ajax({
-      url: "http://www.codecademy.com/forum_questions/" + id,
+      url: "https://www.codecademy.com/forum_questions/" + id,
       dataType: "json",
       type: "GET",
       beforeSend: function(e) {
@@ -16,14 +16,19 @@ function forumUpdater() {
         $("div#section #breadcrumb .breadcrumb b a").remove();
         t = $("div#section #breadcrumb .breadcrumb b").text().split(" ");
         t[1] = (parseInt(e.section_index) + 1).toString(10);
-        $("div#section #breadcrumb .breadcrumb b").html(t.slice(0, 4).join(" ") + " (" + (typeof e.humanized_exercise_index !== "undefined" ? "Exercise " + e.humanized_exercise_index.toString(10) : "General Forum") + ")").prepend(h);
+        $("div#section #breadcrumb .breadcrumb b").html(t.slice(0, 4).join(" ") + " (" + (typeof e.humanized_exercise_index != "undefined" ? "Exercise " + e.humanized_exercise_index.toString(10) : "General Forum") + ")").prepend(h);
       }
     })
   }
   
+  // remove the tooltip from the dropdowns when creating a new question
+  $('.dropdown-toggle').removeAttr("data-original-title");
+  
   // restyle and add some basic functionality back into the search form
   $('#forum_search input[type="text"]').attr("autocomplete", "off");
   $('#forum_search input[type="submit"]').attr("value", "Search");
+  $('.section').addClass("forum_question"); // so the user can search through sections of a course
+  $('.section_link').addClass("title"); // so the user can search through sections of a course
   
   if (window.location.search) {
     if (window.location.search.substr(0, 3) == "?q=") {
@@ -70,7 +75,7 @@ function forumUpdater() {
   $("body").append("<style>.timestamp:hover, div.answer_comments_block div.comment-details span:hover { cursor: pointer; color: #F65A5B;}</style>");
 
   $(document).on('click', '.timestamp', function() {
-	var url = 'http://www.codecademy.com' + window.location.pathname + '#'; 
+	var url = 'https://www.codecademy.com' + window.location.pathname + '#'; 
     link = $(this).closest('li.forum_response').attr('id');
     if (link == undefined) {
       link = "";
@@ -79,7 +84,7 @@ function forumUpdater() {
   }); 
 
   $(document).on('click', 'div.answer_comments_block div.comment-details span', function() {
-    var url = 'http://www.codecademy.com' + window.location.pathname + '#'; 
+    var url = 'https://www.codecademy.com' + window.location.pathname + '#'; 
     link = $(this).closest('li.forum_response_comment').attr('id'); 
     prompt('Copy to clipboard: Ctrl + C, Enter', url + link); 
   });

@@ -48,10 +48,10 @@ function siteUpdater() {
   
   // update users' profiles with some additional info
   $.getJSON('/api/v1/users' + window.location.pathname, function(d) {
-      CCDATA.user = d
-    }).done(function() {
-      $("article.fit-full.color-scheme--darkgrey").after('<article class="fit-full color-scheme--darkgrey"><div class="fit-fixed"><div class="grid-row profile-time" style="text-align: center;"><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block;"><h3 class="padding-right--quarter">' + CCDATA.user.points_today + '</h3><small>points today</small></div><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block;"><h3 class="padding-right--quarter">' + CCDATA.user.streak_hash.max_count + '</h3><small>day best streak</small></div><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block"><h3 class="padding-right--quarter">' + CCDATA.user.points_hash.best_points_day + '</h3><small>Best points day</small></div></div></div></article>');
-    });
+    CCDATA.user = d
+  }).done(function() {
+    $("article.fit-full.color-scheme--darkgrey").after('<article class="fit-full color-scheme--darkgrey"><div class="fit-fixed"><div class="grid-row profile-time" style="text-align: center;"><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block;"><h3 class="padding-right--quarter">' + CCDATA.user.points_today + '</h3><small>points today</small></div><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block;"><h3 class="padding-right--quarter">' + CCDATA.user.streak_hash.max_count + '</h3><small>day best streak</small></div><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block"><h3 class="padding-right--quarter">' + CCDATA.user.points_hash.best_points_day + '</h3><small>Best points day</small></div></div></div></article>');
+  });
   
   // add a link in the footer pointing to old group posts
   $("div#footer__main div#footer__company__links").after('<br><a href="https://github.com/A-J-C/CodecademyGroups">Codecademy Group Posts Saved on GitHub</a>');

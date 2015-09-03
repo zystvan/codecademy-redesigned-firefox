@@ -1,3 +1,7 @@
+.completed {
+  background-color: #34B3A0;
+}
+
 div.new_forum_question div.control-group .user-card .profile-image-container img {
   margin-left: -1.5px;
 }
@@ -24,6 +28,51 @@ div.new_forum_question input.ask_button:active, div.new_forum_question input.ask
 div.new_forum_question input.ask_button:hover, div.new_forum_question .actions a.button:hover {
   background: #59A1C7;
   border-color: #59A1C7;
+}
+
+#context #ex-nav .dropdown-menu {
+  margin-left: 3px;
+}
+
+#forum-guidelines a {
+  display: none;
+}
+
+.btn.dropdown-toggle, #forum .new_forum_question #context a {
+  color: #555;
+  background-color: #F5F5F5;
+  box-shadow: none;
+  padding: 12px 8px;
+  outline: 0px none;
+  border-radius: 0;
+  margin-top: -8px;
+}
+
+.btn.dropdown-toggle:hover, .btn.dropdown-toggle:active, .btn.dropdown-toggle:focus {
+  color: white !important;
+  background-color: #1F3F58 !important;
+  text-shadow: none !important;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+.dropdown-menu a {
+  display: block;
+  clear: both;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  padding: 3px 15px !important;
+  margin: 0 !important;
+}
+
+.dropdown-menu a:hover, .dropdown-menu a:active, .dropdown-menu a:focus, .dropdown-menu .active a {
+  color: white !important;
+  background-color: #59A1C7 !important;
+}
+
+.btn-group > a:hover span.caret, .btn-group > a:active span.caret, .btn-group > a:focus span.caret {
+  border-top-color: white;
 }
 
 #wrapper {
@@ -119,7 +168,7 @@ div.new_forum_question input.ask_button:hover, div.new_forum_question .actions a
   border-radius: 0;
 }
 
-#forum .exercises .btn-group:first-child>a {
+#forum .exercises .btn-group:first-child > a {
   width: 250px;
   border-right: 1px solid #DDD;
 }
@@ -134,22 +183,6 @@ div.new_forum_question input.ask_button:hover, div.new_forum_question .actions a
   width: 102px;
   margin-left: -40px;
   margin-right: -4px;
-}
-
-#forum .exercises .btn-group > a:active, #forum .exercises .btn-group > a:hover, .btn-group .dropdown-toggle:active, .btn-group.open .dropdown-toggle {
-  color: white;
-  background-color: #1F3F58;
-  text-shadow: none;
-  box-shadow: none;
-  outline: 0;
-}
-
-.dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
-  background-color: #59A1C7;
-}
-
-#forum .exercises .btn-group > a:active span.caret, #forum .exercises .btn-group > a:hover span.caret {
-  border-top-color: white;
 }
 
 .btn-group.open .dropdown-menu {
@@ -293,7 +326,7 @@ div.forum_question .new_forum_answer #wmd-editor {
   margin-top: -5px;
 }
 
-div.forum_question>.digest .subscribe-link {
+div.forum_question > .digest .subscribe-link {
   border-radius: 0;
   background: #1F3F58;
   border: 0;
@@ -303,37 +336,38 @@ div.forum_question>.digest .subscribe-link {
   color: white;
 }
 
-div.forum_question>.digest .subscribe-link:hover {
+div.forum_question > .digest .subscribe-link:hover {
   background: #59A1C7;
 }
 
-#section #breadcrumb, #section div.field.switch {
+#section #breadcrumb, #section div.field.switch, #section div.field_switch {
   margin-right: 15px;
 }
 
-#section label {
+#section label, #course label {
   background: none;
   border: none;
   border-radius: 0;
 }
 
-.field.switch label:first-child, .field.switch label:last-child {
+.field.switch label:first-child, .field.switch label:last-child, .field_switch label:first-child, .field_switch label:last-child {
   border-right: solid 1px #CCC !important;
   border-left: solid 1px #CCC !important;
 }
 
-.field.switch label.selected a {
+.field.switch label.selected a, .field_switch label.selected a {
   color: #1F3F58;
-  text-shadow: 0 0;
+  text-shadow: none;
 }
 
-#section label:hover {
+#section label:hover, #course_toggle label:hover {
   background: #1F3F58;
 }
 
-#section label:hover a {
+#section label:hover a, #course_toggle label:hover a {
   color: white;
   font-weight: normal;
+  text-shadow: none;
 }
 
 .answer_comments_block a.show-more {
