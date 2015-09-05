@@ -1,6 +1,6 @@
 function siteUpdater() {
   // show the number of unread notifications in the tab title
-  if (CCDATA.current_user) {
+  if (CCDATA && CCDATA.current_user) {
     var count = 0;
     var oldCount = 0;
     var title = $("title").html();
@@ -20,7 +20,7 @@ function siteUpdater() {
           else {
             $("title").html("(" + count + ") " + title);
 
-            if (window.Notification && Notification.permission !== "denied") {
+            if (window.Notification && Notification.permission != "denied") {
               Notification.requestPermission(function(status) {
                 var n = new Notification(count + ' Codecademy notifications', {
                   icon: 'https://pbs.twimg.com/profile_images/499697083398381568/ih2vOpDt_400x400.png',
@@ -47,10 +47,10 @@ function siteUpdater() {
   }
   
   // update users' profiles with some additional info
-  $.getJSON('/api/v1/users' + window.location.pathname, function(d) {
-    CCDATA.user = d
+  $.getJSON('https://www.codecademy.com/api/v1/users' + window.location.pathname, function(data) {
+    var user = data;
   }).done(function() {
-    $("article.fit-full.color-scheme--darkgrey").after('<article class="fit-full color-scheme--darkgrey"><div class="fit-fixed"><div class="grid-row profile-time" style="text-align: center;"><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block;"><h3 class="padding-right--quarter">' + CCDATA.user.points_today + '</h3><small>points today</small></div><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block;"><h3 class="padding-right--quarter">' + CCDATA.user.streak_hash.max_count + '</h3><small>day best streak</small></div><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block"><h3 class="padding-right--quarter">' + CCDATA.user.points_hash.best_points_day + '</h3><small>Best points day</small></div></div></div></article>');
+    $("article.fit-full.color-scheme--darkgrey").after('<article class="fit-full color-scheme--darkgrey"><div class="fit-fixed"><div class="grid-row profile-time" style="text-align: center;"><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block;"><h3 class="padding-right--quarter">' + user.points_today + '</h3><small>points today</small></div><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block;"><h3 class="padding-right--quarter">' + user.streak_hash.max_count + '</h3><small>day best streak</small></div><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block"><h3 class="padding-right--quarter">' + user.points_hash.best_points_day + '</h3><small>Best points day</small></div></div></div></article>');
   });
   
   // add a link in the footer pointing to old group posts

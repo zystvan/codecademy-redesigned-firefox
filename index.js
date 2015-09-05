@@ -3,28 +3,19 @@ var self = require('sdk/self');
 // import the page-mod api
 var pageMod = require("sdk/page-mod");
 
-// create a page-mod
-// load some scripts everywhere on codecademy
-// profile-updater.js is only supposed to be for profiles, but there's no way
-// to detect whether you're on someone profiles or not :/
+// create a bunch of page-mods
+// load some files everywhere on codecademy
+// profile-updater.js is only supposed to be for profiles but theres no way
+// to detect whether you're on someones profile or not that i know of :/
 pageMod.PageMod({
   include: "*.codecademy.com",
+  exclude: /.*production.*codecademy\.com.*/,
   contentScriptFile: ["./jquery-1.11.1.js", "./site-updater.js"],
   contentStyleFile: "./site-updater.css"
 });
-
-// create a page-mod
-// load some forum scripts whenever we're on a forum
+// load some files whenever we're on a forum
 pageMod.PageMod({
-  include: "https://www.codecademy.com/forum*",
-  contentScriptFile: ["./jquery-1.11.1.js", "./forum-updater.js"],
-  contentStyleFile: "./forum-updater.css"
-});
-
-// create a page-mod
-// load some forum scripts whenever we're on a forum
-pageMod.PageMod({
-  include: "https://codecademy.com/forum*",
-  contentScriptFile: ["./jquery-1.11.1.js", "./forum-updater.js"],
+  include: /.*codecademy.com\/.*forum.*/,
+  contentScriptFile: "./forum-updater.js",
   contentStyleFile: "./forum-updater.css"
 });

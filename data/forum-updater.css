@@ -2,6 +2,10 @@
   background-color: #34B3A0;
 }
 
+input, textarea {
+  font-family: 'Oxygen', sans-serif;
+}
+
 div.new_forum_question div.control-group .user-card .profile-image-container img {
   margin-left: -1.5px;
 }
@@ -361,12 +365,11 @@ div.forum_question > .digest .subscribe-link:hover {
 }
 
 #section label:hover, #course_toggle label:hover {
-  background: #1F3F58;
+  background-color: #1F3F58;
 }
 
 #section label:hover a, #course_toggle label:hover a {
   color: white;
-  font-weight: normal;
   text-shadow: none;
 }
 
@@ -408,6 +411,10 @@ textarea:focus {
 
 .answer_comments_block .comment_form_block textarea.add_comment_form, .new_forum_answer textarea {
   border-radius: 0;
+}
+
+.add_comment_form {
+  height: 20px;
 }
 
 .answer_comments_block .comment_form_block input.create_comment, div.forum_question .new_forum_answer .actions .button {
