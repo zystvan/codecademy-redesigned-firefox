@@ -129,7 +129,7 @@ div.new_forum_question input.ask_button:hover, div.new_forum_question .actions a
 }
 
 #forum #search #forum_search input[type="text"] {
-  width: 565px;
+  width: 569px;
   height: 100%;
   background-color: white;
   line-height: 20px;
@@ -319,6 +319,11 @@ li.forum_response .answer_comments_block {
   background: #FAFAFA;
 }
 
+.timestamp:hover, div.answer_comments_block div.comment-details span:hover {
+  color: #F65A5B;
+  cursor: pointer;
+}
+
 div.forum_question .new_forum_answer #wmd-editor {
   background: #FAFAFA;
   border-radius: 0;
@@ -354,8 +359,11 @@ div.forum_question > .digest .subscribe-link:hover {
   border-radius: 0;
 }
 
-.field.switch label:first-child, .field.switch label:last-child, .field_switch label:first-child, .field_switch label:last-child {
+.field.switch label:first-child, .field_switch label:first-child {
   border-right: solid 1px #CCC !important;
+}
+
+.field.switch label:last-child, .field_switch label:last-child {
   border-left: solid 1px #CCC !important;
 }
 

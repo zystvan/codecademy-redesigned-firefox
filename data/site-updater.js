@@ -1,13 +1,13 @@
 function siteUpdater() {
   // show the number of unread notifications in the tab title
-  if (CCDATA && CCDATA.current_user) {
-    var count = 0;
-    var oldCount = 0;
-    var title = $("title").html();
-    var userId = CCDATA.current_user._id
-    var unreadNotificationsUrl = "https://www.codecademy.com/api/v1/notifications/" + userId + "/unread_count";
+  if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
+    var count = 0,
+        oldCount = 0,
+        title = $("title").html(),
+        userId = unsafeWindow.CCDATA.current_user._id,
+        unreadNotificationsUrl = "https://www.codecademy.com/api/v1/notifications/" + userId + "/unread_count";
 
-    var updateCount = function() {
+    function updateCount() {
       oldCount = count;
 
       $.getJSON(unreadNotificationsUrl, function(data) {
@@ -28,7 +28,6 @@ function siteUpdater() {
                   tag: 'codecademy-notification'
                 });
 
-
                 n.onclick = function() {
                   var windowObjectReference = window.open("https://www.codecademy.com/notifications", "Notifications | Codecademy");
                 }
@@ -42,8 +41,8 @@ function siteUpdater() {
         }
       });
     }
-    setTimeout( updateCount, 2000 );
-    setInterval(updateCount, 5000);
+    setTimeout(updateCount, 7000);
+    setInterval(updateCount, 7000);
   }
   
   // update users' profiles with some additional info
@@ -57,6 +56,4 @@ function siteUpdater() {
   $("div#footer__main div#footer__company__links").after('<br><a href="https://github.com/A-J-C/CodecademyGroups">Codecademy Group Posts Saved on GitHub</a>');
 }
 
-var script = document.createElement("script");
-script.textContent = "$(document).ready(" + siteUpdater.toString() + ")";
-document.documentElement.appendChild(script);
+siteUpdater();
