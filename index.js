@@ -1,5 +1,7 @@
 // import the self api
-var self = require('sdk/self');
+var self = require("sdk/self");
+// import the tabs api
+var tabs = require("sdk/tabs");
 // import the page-mod api
 var pageMod = require("sdk/page-mod");
 
@@ -8,7 +10,7 @@ var pageMod = require("sdk/page-mod");
 // profile-updater.js is only supposed to be for profiles but theres no way
 // to detect whether you're on someones profile or not that i know of :/
 pageMod.PageMod({
-  include: /.*codecademy.com/,
+  include: "*.codecademy.com",
   exclude: /.*production.*codecademy\.com.*/,
   contentScriptFile: ["./jquery-1.11.1.js", "./site-updater.js"],
   contentStyleFile: "./site-updater.css"

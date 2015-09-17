@@ -12,9 +12,6 @@ function forumUpdater() {
     });
   }
   
-  // remove the tooltip from the dropdowns when creating a new question
-  $('.dropdown-toggle').removeAttr("data-original-title");
-  
   // restyle and add some basic functionality back into the search form
   $('#forum_search input[type="text"]').attr("autocomplete", "off");
   $('#forum_search input[type="submit"]').attr("value", "Search");
