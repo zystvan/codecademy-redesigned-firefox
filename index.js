@@ -1,7 +1,5 @@
 // import the self api
 var self = require("sdk/self");
-// import the tabs api
-var tabs = require("sdk/tabs");
 // import the page-mod api
 var pageMod = require("sdk/page-mod");
 
