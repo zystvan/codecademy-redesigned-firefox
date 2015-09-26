@@ -1,8 +1,8 @@
 {
   "title": "Codecademy Redesigned",
   "name": "codecademy_redesigned",
-  "version": "6.2.2",
-  "description": "Improves your experience on Codecademy, re-styling the Q&A forums into a sleeker look and adding many new features",
+  "version": "6.2.3",
+  "description": "Restyled Q&A forums, fixed bugs, and new features - Codecademy Redesigned",
   "main": "index.js",
   "author": "Zeke Y",
   "engines": {

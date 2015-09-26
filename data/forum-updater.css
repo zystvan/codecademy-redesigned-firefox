@@ -1,3 +1,26 @@
+/*******************
+Colors:
+
+Red: #F65A5B
+Green: #34B3A0
+Blue: #204056
+*******************/
+
+.markdown a, .forum_response .entry  .entry a, .forum_answer .entry a {
+  color: #F65A5B;
+  font-weight: normal;
+}
+
+.markdown ul, .forum_response .entry ul, .forum_answer .entry ul {
+  list-style: none;
+  padding: 0 0 18px 18px;
+  margin: 0 !important;
+}
+
+.markdown ul li::before, .forum_response .entry ul li::before, .forum_answer .entry ul li::before {
+  content: "- ";
+}
+
 .completed {
   background-color: #34B3A0;
 }
@@ -429,6 +452,7 @@ textarea:focus {
 }
 
 .add_comment_form {
+  min-height: 20px;
   height: 20px;
 }
 
