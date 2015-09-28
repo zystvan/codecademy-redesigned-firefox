@@ -502,3 +502,11 @@ div.overlay-footer button.btn.btn-cancel:hover {
 div.overlay-footer button.btn.btn-primary:hover {
   background: #F65A5B;
 }
+/* Editing */
+.btn, .field.switch label {
+  text-shadow: none !important;
+}
+.forum_questions #right-col #sidebar .new_question_link:hover {
+  background-color: #34B3A0;
+  border-color: #34B3A0;
+}
