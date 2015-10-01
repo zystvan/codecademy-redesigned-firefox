@@ -6,7 +6,11 @@ Green: #34B3A0
 Blue: #204056
 *******************/
 
-.new-cc-icon.icon-bell.attention::after {
+.index__bell___2tSp1.attention {
+  opacity: 1.0 !important;
+}
+
+.index__bell___2tSp1.attention .icon-bell::after {
   content: '';
   position: absolute;
   top: 0px;
