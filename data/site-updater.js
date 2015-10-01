@@ -15,11 +15,11 @@ if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
       if (count != oldCount && count != undefined) {
         if (count == 0) {
           $("title").html(title);
-//          $('.icon-bell').removeClass('.new-notification');
+          $('.header__nav__link--notifications').removeClass("attention");
         }
         else {
           $('title').html("(" + count + ") " + title);
-//          $('.icon-bell').addClass('.new-notification');
+          $('.header__nav__link--notifications').addClass("attention");
 
           if (window.Notification && Notification.permission != "denied") {
             Notification.requestPermission(function(status) {
@@ -44,8 +44,8 @@ if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
   }
   
   updateCount();
-  setTimeout(updateCount, 5000);
-  setInterval(updateCount, 5000);
+  setTimeout(updateCount, 7000);
+  setInterval(updateCount, 7000);
 }
 
 // add extra data to user profiles

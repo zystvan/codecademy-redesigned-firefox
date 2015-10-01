@@ -6,30 +6,6 @@ Green: #34B3A0
 Blue: #204056
 *******************/
 
-/*
-.header__nav__link header__nav__link--notifications:not(.attention) .icon-bell:not(.new-notification)::after {
-  display: none !important;
-}
-
-.header__nav__link header__nav__link--notifications.attention .icon-bell.new-notification::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  top: 0px;
-  right: 0px;
-  background-color: #F65A5B;
-  border-radius: 50%;
-}
-*/
-
-/*
-.icon-bell:not(.new-notification)::after {
-  display: none;
-}
-*/
-
 footer#footer #footer__main h5 strong {
   font-weight: bold;
 }

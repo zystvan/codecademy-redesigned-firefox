@@ -56,6 +56,7 @@ $('#forum_search input[type="text"]').keydown(function(event) {
   }
 });
 
+// provide links to specific forum answers/comments
 $(document).on('click', '.timestamp', function() {
   var url = window.location.protocol + "//" + window.location.host + window.location.pathname;
   link = $(this).closest('li.forum_response').attr('id');
