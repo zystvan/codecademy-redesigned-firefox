@@ -15,11 +15,11 @@ if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
       if (count != oldCount && count != undefined) {
         if (count == 0) {
           $("title").html(title);
-          $('.header__nav__link--notifications').removeClass("attention");
+          $('.header__nav__link--notifications, .new-cc-icon.icon-bell').removeClass("attention");
         }
         else {
           $('title').html("(" + count + ") " + title);
-          $('.header__nav__link--notifications').addClass("attention");
+          $('.header__nav__link--notifications, .new-cc-icon.icon-bell').addClass("attention");
 
           if (window.Notification && Notification.permission != "denied") {
             Notification.requestPermission(function(status) {
