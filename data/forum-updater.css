@@ -6,7 +6,7 @@ Green: #34B3A0
 Blue: #204056
 *******************/
 
-.markdown a, .entry a, #entry_preview a {
+.markdown a, .entry a:not(.submit_response .new_forum_answer .entry a), #entry_preview a {
   color: #F65A5B;
   font-weight: normal;
 }
@@ -22,7 +22,7 @@ Blue: #204056
   margin: 0 !important;
 }
 
-.markdown ul li::before, .entry ul li::before, #entry_preview ul li::before {
+.markdown ul li::before, .entry ul li::before, #entry_preview ul li::before:not(#wmd-button-bar ul li) {
   content: "- ";
 }
 
@@ -268,7 +268,7 @@ div.forum_question > .digest {
   padding: 20px;
 }
 
-div.forum_question > .digest:before, div.forum_answer > .digest:before, div.forum_question>.digest:after, div.forum_answer>.digest:after {
+div.forum_question > .digest::before, div.forum_answer > .digest::before, div.forum_question > .digest::after, div.forum_answer > .digest::after {
   border-width: 0;
 }
 
@@ -292,7 +292,7 @@ li.forum_question.qa .num_answers {
   color: #5B5B5B;
 }
 
-li.forum_question.flagged:after, li.forum_question.pinned:after {
+li.forum_question.flagged::after, li.forum_question.pinned::after {
   content: none;
 }
 
@@ -380,10 +380,18 @@ div.forum_question .new_forum_answer #wmd-editor {
   border-radius: 0;
 }
 
+div.forum_question .new_forum_answer #wmd-editor::after, div.forum_answer .new_forum_answer #wmd-editor::after {
+  border-left-color: #FAFAFA;
+}
+
 #wmd-button-bar {
   margin-left: 100px;
   padding-bottom: 5px;
   margin-top: -5px;
+}
+
+#wmd-input {
+  min-height: 50px;
 }
 
 div.forum_question > .digest .subscribe-link {
