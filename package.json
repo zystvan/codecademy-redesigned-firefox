@@ -1,7 +1,7 @@
 {
   "title": "Codecademy Redesigned",
   "name": "codecademy_redesigned",
-  "version": "6.2.4",
+  "version": "6.2.5",
   "description": "Restyled Q&A forums, fixed bugs, and new features - Codecademy Redesigned",
   "main": "index.js",
   "author": "Zeke Y",

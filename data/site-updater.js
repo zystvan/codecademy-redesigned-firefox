@@ -1,8 +1,15 @@
+// less code than using document.queryselectorall over & over again
+// hopefully nobody gets it confused with the jquery $, since they 
+// work differently. probably not a big deal, though
+function _$(element) {
+  return document.querySelectorAll(element);
+}
+
 // show the number of unread notifications in the tab title
 if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
   var count = 0,
       oldCount = 0,
-      title = $("title").html(),
+      title = _$('title').textContent,
       userId = unsafeWindow.CCDATA.current_user._id,
       unreadNotificationsUrl = "https://www.codecademy.com/api/v1/notifications/" + userId + "/unread_count";
 
@@ -14,11 +21,11 @@ if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
     }).done(function() {
       if (count != oldCount && count != undefined) {
         if (count == 0) {
-          $("title").html(title);
+          document.querySelector('title').textContent = title;
           $('.header__nav__link--notifications, .index__bell___2tSp1').removeClass("attention");
         }
         else {
-          $('title').html("(" + count + ") " + title);
+          document.querySelector('title').textContent = "(" + count + ") " + title;
           $('.header__nav__link--notifications, .index__bell___2tSp1').addClass("attention");
 
           if (window.Notification && Notification.permission != "denied") {
@@ -58,5 +65,9 @@ $.getJSON(userDataUrl, function(d) {
    $(".profiles.show article.fit-full.color-scheme--darkgrey").after('<article class="fit-full color-scheme--darkgrey"><div class="fit-fixed"><div class="grid-row profile-time" style="text-align: center;"><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block;"><h3 class="padding-right--quarter">' + unsafeWindow.CCDATA.user.points_today + '</h3><small>points today</small></div><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block;"><h3 class="padding-right--quarter">' + unsafeWindow.CCDATA.user.streak_hash.max_count + '</h3><small>day best streak</small></div><div class="grid-col-4 grid-col--align-center" style="float: none; display: inline-block"><h3 class="padding-right--quarter">' + unsafeWindow.CCDATA.user.points_hash.best_points_day + '</h3><small>best points day</small></div></div></div></article>');
 });
 
-// add a link in the footer pointing to old group posts
-$("div#footer__main div#footer__company__links").after('<br><a href="https://github.com/A-J-C/CodecademyGroups">Codecademy Group Posts Saved on GitHub</a>');
+var brElement = document.createElement("br"),
+    aElement = document.createElement("a");
+aElement.setAttribute("href", "https://github.com/A-J-C/CodecademyGroups");
+aElement.textContent = "Codecademy Group posts saved on GitHub";
+_$('#footer #footer__main .grid-col-4')[0].appendChild(brElement);
+_$('#footer #footer__main .grid-col-4')[0].appendChild(aElement);
