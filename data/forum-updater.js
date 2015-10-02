@@ -23,7 +23,7 @@ if (window.location.search && window.location.search.substr(0, 3) == "?q=") {
       posts = $('.forum_question.qa');
 
   input.val(searchVal);
-  
+
   searchVal = searchVal.toLowerCase();
 
   for (var i = 0; i < posts.length; i++) {
@@ -55,6 +55,12 @@ $('#forum_search input[type="text"]').keydown(function(event) {
     }
   }
 });
+
+setTimeout(function() {
+  if ($('#forum_search input[type="submit"]').attr("value") != "Search") {
+    $('#forum_search input[type="submit"]').attr("value", "Search");
+  }
+}, 3000);
 
 // provide links to specific forum answers/comments
 $(document).on('click', '.timestamp', function() {

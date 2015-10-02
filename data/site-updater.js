@@ -1,15 +1,8 @@
-// less code than using document.queryselectorall over & over again
-// hopefully nobody gets it confused with the jquery $, since they 
-// work differently. probably not a big deal, though
-function _$(element) {
-  return document.querySelectorAll(element);
-}
-
 // show the number of unread notifications in the tab title
 if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
   var count = 0,
       oldCount = 0,
-      title = _$('title').textContent,
+      title = document.querySelector('title').textContent,
       userId = unsafeWindow.CCDATA.current_user._id,
       unreadNotificationsUrl = "https://www.codecademy.com/api/v1/notifications/" + userId + "/unread_count";
 
@@ -49,7 +42,7 @@ if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
       }
     });
   }
-  
+
   updateCount();
   setTimeout(updateCount, 7000);
   setInterval(updateCount, 7000);
@@ -69,5 +62,5 @@ var brElement = document.createElement("br"),
     aElement = document.createElement("a");
 aElement.setAttribute("href", "https://github.com/A-J-C/CodecademyGroups");
 aElement.textContent = "Codecademy Group posts saved on GitHub";
-_$('#footer #footer__main .grid-col-4')[0].appendChild(brElement);
-_$('#footer #footer__main .grid-col-4')[0].appendChild(aElement);
+document.querySelector('#footer #footer__main .grid-col-4').appendChild(brElement);
+document.querySelector('#footer #footer__main .grid-col-4').appendChild(aElement);
