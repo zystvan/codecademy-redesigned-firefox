@@ -15,7 +15,8 @@ pageMod.PageMod({
 });
 // load some files whenever the user is on a forum
 pageMod.PageMod({
-  include: /.*codecademy.com\/.*forum.*/,
+//  include: /.*codecademy.com\/.*forum.*/,
+  include: "*.discuss.codecademy.com",
   contentScriptFile: ["./jquery-1.11.1.js", "./forum-updater.js"],
   contentStyleFile: "./forum-updater.css"
 });

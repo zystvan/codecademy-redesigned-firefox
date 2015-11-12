@@ -6,21 +6,15 @@ Green: #34B3A0
 Blue: #204056
 *******************/
 
-.index__bell___2tSp1.attention {
-  opacity: 1.0 !important;
-}
-
-.index__bell___2tSp1.attention .icon-bell::after {
-  content: '';
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 8px;
-  height: 8px;
-  background-color: #F65A5B;
-  border-radius: 50%;
+/* for courses */
+.nano__content.content {
+  overflow-y: auto;
 }
 
 footer#footer #footer__main h5 strong {
   font-weight: bold;
+}
+
+#footer__company__links a:focus {
+  text-decoration: none;
 }
