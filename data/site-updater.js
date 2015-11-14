@@ -1,5 +1,20 @@
-// remove the notification bell since it's not being used anymore
-$('#header__notifications, .index__tab___3LOiu.index__tabButton___2ycO7').remove();
+// make the notification bell link to discuss.codecademy.com/username/notifications
+//$('#header__notifications, .index__section___isdk1.index__sectionRight___2k1mQ .index__tabButton___2ycO7:nth-child(2)')
+if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
+  var username = unsafeWindow.CCDATA.current_user.username;
+  $('.index__bell___2tSp1, .header__nav__link--notifications').attr("href", "http://discuss.codecademy.com/users/" + username + "/notifications");
+}
+
+// tell users about the new version
+if (!localStorage.getItem("Codecademy Redesigned 6.3.1")) {
+  $('body').append('<div id="new-version-popup-container" class="new-version" style="display: none"><div class="popup-background"></div><div id="close-new-version-popup" class="popup-close">&times;</div><div class="popup"><h1>Welcome to Codecademy Redesigned 6.3.1</h1><a href="http://zystvan.com/codecademy-redesigned/6-1-3.html">See the new features here</a></div></div>');
+  $('#new-version-popup-container').fadeIn();
+  $('#close-new-version-popup').click(function() {
+    $('#new-version-popup-container').fadeOut().remove();
+  });
+  
+  localStorage.setItem("Codecademy Redesigned 6.3.1", "Seen");
+}
 
 // add extra data to user profiles
 var userDataUrl = window.location.href.substr(8).replace("/", "/api/v1/users/").toString();

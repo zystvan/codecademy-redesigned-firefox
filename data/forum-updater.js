@@ -1,32 +1,17 @@
-/************
+// tell users about the new version
+if (!localStorage.getItem("Codecademy Redesigned 6.3.1")) {
+  $('body').append('<div id="new-version-popup-container" class="new-version" style="display: none"><div class="popup-background"></div><div id="close-new-version-popup" class="popup-close">&times;</div><div class="popup"><h1>Welcome to Codecademy Redesigned 6.3.1</h1><a href="http://zystvan.com/codecademy-redesigned/6-1-3.html">See the new features here</a></div></div>');
+  $('#new-version-popup-container').fadeIn();
+  $('#close-new-version-popup').click(function() {
+    $('#new-version-popup-container').fadeOut().remove();
+  });
 
-Example Canned Response: 
+  localStorage.setItem("Codecademy Redesigned 6.3.1", "Seen");
+}
 
--------------------------------------------------------------
-
-Hi Name, 
-
-Your code isn't currently visible, please edit your post, format it, and reply back so we know you've updated it :\)
-You can format code by wrapping it with three backticks (`` ` ``, it's the key above `Tab` on your keyboard) and a new line before and after, like so: 
-
-    
-    ```
-    code goes here
-    ```
-    
-
-Thanks! 
-You can see more on code formatting [here][1]. 
-
-[1]: http://discuss.codecademy.com/t/using-backticks-to-format-your-code/3697/3
-
--------------------------------------------------------------
-
-************/
-
-
-
-var cannedResponses;
+// for use below, they need to be defined globally
+var cannedResponses,
+    HtmlListOfCannedResponses;
 
 // get the canned responses
 function getCannedResponses() {
@@ -37,8 +22,28 @@ function getCannedResponses() {
 
   cannedResponses = localStorage.getItem("Canned Responses");
   cannedResponses = JSON.parse(cannedResponses);
-  
+
   return cannedResponses;
+};
+
+// generate the list of canned responses
+function generateHtmlListOfCannedResponses() {
+  getCannedResponses();
+
+  HtmlListOfCannedResponses = '<li id="new-canned-response"><a href="javascript:void(0);">Create new</a></li>';
+
+  for (i in cannedResponses) {
+    HtmlListOfCannedResponses += '<li data-canned-response-id="' + i + '"><a href="javascript:void(0);">' + cannedResponses[i]["name"] + '</a></li>';
+  }
+
+  return HtmlListOfCannedResponses;
+};
+
+// add the canned response button to the formatting bar
+function addCannedResponseButton() {
+  $('.wmd-button-bar .wmd-button-row').append('<div class=\"wmd-spacer\" id=\"wmd-spacer3\"></div><button class=\"wmd-button wmd-canned-response-button\" id=\"wmd-canned-response-button\" title=\"Canned responses\" aria-label=\"Canned responses\"></button>');
+  $('.wmd-button-bar').append('<div class="canned-response-container" id="canned-response-container"><ul id="canned-responses-list">' + HtmlListOfCannedResponses + '</ul></div>');
+  $('.canned-response-container').hide();
 };
 
 // create a new canned response
@@ -48,18 +53,16 @@ function newCannedResponse() {
       end = textarea.selectionEnd,
       cannedResponseText = textarea.value.substring(start, end),
       cannedResponseName = prompt("Please name your canned response:", cannedResponseText.slice(0, 10) + "...");
-  
+
+  if (!cannedResponseName) {
+    return "You need to name your canned response!";
+  }
+
   cannedResponses[Object.keys(cannedResponses).length] = { "name": cannedResponseName, "body": cannedResponseText }
   localStorage.setItem("Canned Responses", JSON.stringify(cannedResponses));
-  
-  getCannedResponses();
-  
-  var HtmlListOfCannedResponses = '<li id="new-canned-response">Create new</li>';
-  
-  for (i in cannedResponses) {
-    HtmlListOfCannedResponses += '<li data-canned-response-id="' + i + '">' + cannedResponses[i]["name"] + '</li>';
-  }
-  
+
+  generateHtmlListOfCannedResponses();
+
   $('#canned-responses-list').html(HtmlListOfCannedResponses);
 };
 
@@ -70,23 +73,12 @@ function prefillWithCannedResponse(text) {
 
 $('button.create').click(function() {
   window.setTimeout(function() {
-    getCannedResponses();
-    
-    var HtmlListOfCannedResponses = '<li id="new-canned-response">Create new</li>';
-    
-    for (i in cannedResponses) {
-      HtmlListOfCannedResponses += '<li data-canned-response-id="' + i + '">' + cannedResponses[i]["name"] + '</li>';
-    }
-    
-    $('.wmd-button-bar .wmd-button-row').append('<div class=\"wmd-spacer\" id=\"wmd-spacer3\"></div><button class=\"wmd-button wmd-canned-response-button\" id=\"wmd-canned-response-button\" title=\"Canned responses\" aria-label=\"Canned responses\"></button>');
-    $('.wmd-button-bar').append('<div class="canned-response-container" id="canned-response-container"><ul id="canned-responses-list">' + HtmlListOfCannedResponses + '</ul></div>');
-    $('.canned-response-container').hide();
-    
-    $('#wmd-canned-response-button').click(function() {
-      getCannedResponses();
+    generateHtmlListOfCannedResponses();
+    addCannedResponseButton();
 
+    $('#wmd-canned-response-button').click(function() {
       $('.canned-response-container').toggle();
-      
+
       $('#canned-responses-list li').not('#new-canned-response').click(function() {
         prefillWithCannedResponse(cannedResponses[$(this).attr("data-canned-response-id")]["body"]);
       });
