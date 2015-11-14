@@ -6,14 +6,14 @@ if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
 }
 
 // tell users about the new version
-if (!localStorage.getItem("Codecademy Redesigned 6.3.1")) {
-  $('body').append('<div id="new-version-popup-container" class="new-version" style="display: none"><div class="popup-background"></div><div id="close-new-version-popup" class="popup-close">&times;</div><div class="popup"><h1>Welcome to Codecademy Redesigned 6.3.1</h1><a href="http://zystvan.com/codecademy-redesigned/6-1-3.html">See the new features here</a></div></div>');
+  if (!localStorage.getItem("Codecademy Redesigned 6.4.0")) {
+  $('body').append('<div id="new-version-popup-container" class="new-version" style="display: none"><div class="popup-background"></div><div id="close-new-version-popup" class="popup-close">&times;</div><div class="popup"><h1>Welcome to Codecademy Redesigned 6.4.0</h1><a href="http://zystvan.com/codecademy-redesigned/6-4-0.html">See the new features here</a></div></div>');
   $('#new-version-popup-container').fadeIn();
   $('#close-new-version-popup').click(function() {
     $('#new-version-popup-container').fadeOut().remove();
   });
-  
-  localStorage.setItem("Codecademy Redesigned 6.3.1", "Seen");
+
+  localStorage.setItem("Codecademy Redesigned 6.4.0", "Seen");
 }
 
 // add extra data to user profiles
