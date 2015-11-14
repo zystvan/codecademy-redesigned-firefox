@@ -2,23 +2,19 @@
 
 ## Features
 
-**Restyles the Codecademy forums and adds several new features, as well as fixing a few of the bugs on Codecademy**
+Codecademy makes your experience on Codecademy much better with the following features: 
 
-This extension combines several previous extensions and completely revolutionizes your experience on Codecademy. This extension does the following:
-
-\- Restyles the Q&A Forums making them fit in seamlessly with the new UI, rather than the old clunky look and feel of the forum pages.  
-\- Lets you link to a specific response or comment in the Q&A forums by clicking the time stamp.  
-\- Adds the correct exercise number into Q&A question pages (previously broken). Many thanks to [Joah Gerstenberg](https://www.joahg.com) who built the original extension to do this.  
-\- Partially fixes the forum search, giving you the ability to search throught the posts shown.  
-\- Adds a link in the footer to a GitHub repository containing old posts saved from Groups, including many useful tutorials.  
-\- Shows the number of unread notifications in the tab title and uses Desktop Notifications to alert you when there's a new one.  
-\- Updates the Profile Page, adding 'points today', 'best points day', and best day streak' back into the profile.  
+- Adds a new Canned Responses feature into the forums for people who type the same thing a lot
+- Redesigns the Forums to have darker colors with more contrast, to strain the eye less 
+- Adds a link in the footer to a GitHub repository containing old posts saved from Groups, including many useful tutorials.  
+- Makes the notification bell link to your [Discuss][1] notifications, instead of the old notifications page
+- Updates the Profile Page, adding 'points today', 'best points day', and best day streak' back into the profile.  
 
 Enjoy the improvements, we plan on adding many more :)
 
 ## How to contribute
 
-After you've cloned this repository to your local machine, you'll need to install jpm, through npm. Unless you already have npm installed, the recommended way is to install Node.js®, since npm comes with Node.js® automatically. You can install Node.js® from [here](https://nodejs.org). After you've done that, open up a terminal and type 
+After you've cloned this repository to your local machine, you'll need to install jpm, through npm. Unless you already have npm installed, the recommended way is to install Node.js®, since npm comes with Node.js® automatically. You can install Node.js® from [here][2]. After you've done that, open up a terminal and type 
 
 ```bash
 $ sudo npm install jpm --global
@@ -31,3 +27,6 @@ $ jpm run -b /usr/lib/firefox/firefox.sh
 ```
 
 You can then make whatever changes you want, and preview them by re-running the command above (`jpm run -b...`). 
+
+[1]: http://discuss.codecademy.com
+[2]: https://nodejs.org
