@@ -1,5 +1,4 @@
 // make the notification bell link to discuss.codecademy.com/username/notifications
-//$('#header__notifications, .index__section___isdk1.index__sectionRight___2k1mQ .index__tabButton___2ycO7:nth-child(2)')
 if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
   var username = unsafeWindow.CCDATA.current_user.username;
   $('.index__bell___2tSp1, .header__nav__link--notifications').attr("href", "http://discuss.codecademy.com/users/" + username + "/notifications");

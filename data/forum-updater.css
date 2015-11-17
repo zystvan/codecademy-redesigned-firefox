@@ -164,12 +164,12 @@ body, .user-main .user-stream .item {
 
 .quote, blockquote {
   border: 1px solid #BCBEC0;
+  border-left: 5px solid #BCBEC0;
+  margin: 0;
 }
 
-.quote blockquote {
-  border: 0;
-  border-left: 5px solid #EDEDED;
-  margin: 0;
+.quote blockquote, .quote .title {
+  border: 0 !important;
 }
 
 a.mention, blockquote, .quote .title, pre, code {
