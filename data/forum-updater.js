@@ -1,14 +1,3 @@
-// tell users about the new version
-  if (!localStorage.getItem("Codecademy Redesigned 7.0.0")) {
-    $('body').append('<div id="new-version-popup-container" class="new-version" style="display: none"><div class="popup-background"></div><div id="close-new-version-popup" class="popup-close">&times;</div><div class="popup"><h1>Welcome to Codecademy Redesigned 7.0.0</h1><a href="http://zystvan.com/codecademy-redesigned/7-0-0.html">See the new features here</a></div></div>');
-    $('#new-version-popup-container').fadeIn();
-    $('#close-new-version-popup').click(function() {
-      $('#new-version-popup-container').fadeOut().remove();
-    });
-
-    localStorage.setItem("Codecademy Redesigned 7.0.0", "Seen");
-  }
-
 // for use below, they need to be defined globally
 var cannedResponses,
     HtmlListOfCannedResponses;
@@ -66,26 +55,45 @@ function newCannedResponse() {
   $('#canned-responses-list').html(HtmlListOfCannedResponses);
 };
 
+// put the canned response text into the textarea
 function prefillWithCannedResponse(text) {
-  $('textarea')[0].value = text;
+  $('.wmd-input')[0].value = text;
   $('#canned-response-container').toggle();
 };
 
-$('button.create').click(function() {
-  window.setTimeout(function() {
-    generateHtmlListOfCannedResponses();
-    addCannedResponseButton();
+// collect all the other functions together and run them
+function runTheCannedResponseFunctions() {
+  generateHtmlListOfCannedResponses();
+  addCannedResponseButton();
 
-    $('#wmd-canned-response-button').click(function() {
-      $('.canned-response-container').toggle();
+  $('#wmd-canned-response-button').click(function() {
+    $('.canned-response-container').toggle();
 
-      $('#canned-responses-list li').not('#new-canned-response').click(function() {
-        prefillWithCannedResponse(cannedResponses[$(this).attr("data-canned-response-id")]["body"]);
-      });
-
-      $('#new-canned-response').click(function() {
-        newCannedResponse();
-      });
+    $('#canned-responses-list li').not('#new-canned-response').click(function() {
+      prefillWithCannedResponse(cannedResponses[$(this).attr("data-canned-response-id")]["body"]);
     });
-  }, 400);
+
+    $('#new-canned-response').click(function() {
+      newCannedResponse();
+    });
+  });
+}
+
+// detect when the text box is popped up, then run 
+var target = document.querySelector('#reply-control'),
+    config = {
+      attributes: true,
+      childList: true,
+      characterData: true,
+      subtree: true
+    };
+
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if ($('#wmd-canned-response-button').length <= 0) {
+      runTheCannedResponseFunctions();
+    }
+  });    
 });
+
+observer.observe(target, config);
