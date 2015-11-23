@@ -12,7 +12,6 @@ Gray 4: #939598
 *******************/
 
 /* importing custom fonts */
-
 @font-face {
   font-family: 'Oxygen';
   font-style: normal;
@@ -35,7 +34,6 @@ Gray 4: #939598
 }
 
 /* styles */
-
 .new-version > * {
   z-index: 9999;
 }
@@ -185,6 +183,14 @@ nav.post-controls button:not(button.like):hover {
   background-color: #E6E7E8;
 }
 
+.wmd-button-bar.active {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3), 0 0 8px #34B3A0;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3), 0 0 8px #34B3A0;
+  border: 1px solid #34B3A0;
+  border-bottom: 1px solid #34B3A0 !important;
+  border-radius: 0 0 4px 4px;
+}
+
 .wmd-canned-response-button::before {
   content: "\f044";
 }
@@ -198,24 +204,25 @@ nav.post-controls button:not(button.like):hover {
 }
 
 .canned-response-container ul {
-  padding: 0 0 0 8px;
+  padding: 0 4px;
   margin: 0;
 }
 
 .canned-response-container li {
-  padding: 2px;
+  min-height: 1em;
   cursor: pointer;
   list-style: none;
+  padding: 3px 7px 4px;
   -webkit-user-select: none;
      -moz-user-select: none;
        -o-user-select: none;
           user-select: none;
 }
 
-.canned-response-container li:hover {
+.canned-response-container li:hover, .select2-results li:hover {
   background-color: #F1F2F2;
 }
 
 .canned-response-container li a {
-  color: #939598;
+  color: #4080AC;
 }

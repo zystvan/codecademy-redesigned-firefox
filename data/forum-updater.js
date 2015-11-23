@@ -68,13 +68,16 @@ function runTheCannedResponseFunctions() {
 
   $('#wmd-canned-response-button').click(function() {
     $('.canned-response-container').toggle();
+    $('.wmd-button-bar').toggleClass("active");
 
     $('#canned-responses-list li').not('#new-canned-response').click(function() {
       prefillWithCannedResponse(cannedResponses[$(this).attr("data-canned-response-id")]["body"]);
+      $('.wmd-button-bar').toggleClass("active");
     });
 
     $('#new-canned-response').click(function() {
       newCannedResponse();
+      $('.wmd-button-bar').toggleClass("active");
     });
   });
 }
@@ -90,10 +93,10 @@ var target = document.querySelector('#reply-control'),
 
 var observer = new MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
-    if ($('#wmd-canned-response-button').length <= 0) {
+    if ($('#wmd-canned-response-button').length < 1) {
       runTheCannedResponseFunctions();
     }
-  });    
+  });
 });
 
 observer.observe(target, config);
