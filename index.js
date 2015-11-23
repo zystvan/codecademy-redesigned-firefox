@@ -19,3 +19,9 @@ pageMod.PageMod({
   contentScriptFile: ["./jquery-1.11.1.js", "./forum-updater.js"],
   contentStyleFile: "./forum-updater.css"
 });
+
+exports.onUnload = function(reason) {
+  if (reason == "uninstall" || reason == "disable") {
+    observer.disconnect();
+  }
+};
