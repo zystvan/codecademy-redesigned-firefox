@@ -120,15 +120,15 @@ body, .user-main .user-stream .item {
   color: #4A4A4C !important;
 }
 
-.cooked a[href]:not(.mention) {
+.cooked a:not(.mention) {
   color: #F65A5B;
 }
 
-.cooked a[href]:not(.mention):hover {
+.cooked a:not(.mention):hover {
   text-decoration: underline;
 }
 
-.cooked .onebox header a[href], .cooked .onebox header a[href]:hover {
+.cooked .onebox header a, .cooked .onebox header a:hover {
   color: #4A4A4C;
   text-decoration: none;
 }
@@ -174,7 +174,7 @@ a.mention, blockquote, .quote .title, pre, code {
   background-color: #E6E7E8 !important;
 }
 
-.quote-controls, nav.post-controls button {
+.quote-controls, .quote-controls .back::before, nav.post-controls button {
   color: #BCBEC0;
   opacity: 1 !important
 }
@@ -184,6 +184,8 @@ nav.post-controls button:not(button.like):hover {
 }
 
 .wmd-button-bar.active {
+  max-height: 75%;
+  overflow-y: auto;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3), 0 0 8px #34B3A0;
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3), 0 0 8px #34B3A0;
   border: 1px solid #34B3A0;
@@ -198,9 +200,8 @@ nav.post-controls button:not(button.like):hover {
 .canned-response-container {
   display: inline-block;
   width: 100%;
-  max-height: 75%;
   height: auto;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .canned-response-container ul {

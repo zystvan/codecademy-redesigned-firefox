@@ -4,12 +4,12 @@ var cannedResponses,
 
 // get the canned responses
 function getCannedResponses() {
-  if (!localStorage.getItem("Canned Responses")) {
+  if (!localStorage.getItem("canned_responses")) {
     cannedResponses = {}
-    localStorage.setItem("Canned Responses", JSON.stringify(cannedResponses));
+    localStorage.setItem("canned_responses", JSON.stringify(cannedResponses));
   }
 
-  cannedResponses = localStorage.getItem("Canned Responses");
+  cannedResponses = localStorage.getItem("canned_responses");
   cannedResponses = JSON.parse(cannedResponses);
 
   return cannedResponses;
@@ -44,21 +44,31 @@ function newCannedResponse() {
       cannedResponseName = prompt("Please name your canned response:", cannedResponseText.slice(0, 10) + "...");
 
   if (!cannedResponseName) {
-    return "You need to name your canned response!";
+    $('#canned-response-container').toggle();
+    $('.wmd-button-bar').toggleClass("active");
+    
+    return false;
   }
 
   cannedResponses[Object.keys(cannedResponses).length] = { "name": cannedResponseName, "body": cannedResponseText }
-  localStorage.setItem("Canned Responses", JSON.stringify(cannedResponses));
+  
+//  cannedResponses[cannedResponseName] = cannedResponseText
+  
+  localStorage.setItem("canned_responses", JSON.stringify(cannedResponses));
 
   generateHtmlListOfCannedResponses();
 
   $('#canned-responses-list').html(HtmlListOfCannedResponses);
+  
+  $('#canned-response-container').toggle();
+  $('.wmd-button-bar').toggleClass("active");
 };
 
 // put the canned response text into the textarea
 function prefillWithCannedResponse(text) {
-  $('.wmd-input')[0].value = text;
+  $('.wmd-input')[0].value += text;
   $('#canned-response-container').toggle();
+  $('.wmd-input').focus().keyup();
 };
 
 // collect all the other functions together and run them
@@ -77,7 +87,6 @@ function runTheCannedResponseFunctions() {
 
     $('#new-canned-response').click(function() {
       newCannedResponse();
-      $('.wmd-button-bar').toggleClass("active");
     });
   });
 }
