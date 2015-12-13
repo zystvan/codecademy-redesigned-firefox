@@ -210,6 +210,7 @@ nav.post-controls button:not(button.like):hover {
 }
 
 .canned-response-container li {
+  position: relative;
   min-height: 1em;
   cursor: pointer;
   list-style: none;
@@ -218,6 +219,16 @@ nav.post-controls button:not(button.like):hover {
      -moz-user-select: none;
        -o-user-select: none;
           user-select: none;
+}
+
+.canned-response-container .fa-trash {
+  position: absolute;
+  top: 6px;
+  right: 7px;
+}
+
+.canned-response-container .fa-trash:hover {
+  color: #F65A5B;
 }
 
 .canned-response-container li:hover, .select2-results li:hover {

@@ -1,6 +1,6 @@
 // for use below, they need to be defined globally
 var cannedResponses,
-    HtmlListOfCannedResponses;
+    htmlListOfCannedResponses;
 
 // get the canned responses
 function getCannedResponses() {
@@ -19,19 +19,19 @@ function getCannedResponses() {
 function generateHtmlListOfCannedResponses() {
   getCannedResponses();
 
-  HtmlListOfCannedResponses = '<li id="new-canned-response"><a href="javascript:void(0);">Create new</a></li>';
+  htmlListOfCannedResponses = '<li id="new-canned-response"><a href="javascript:void(0);">Create new</a></li>';
 
   for (i in cannedResponses) {
-    HtmlListOfCannedResponses += '<li data-canned-response-id="' + i + '"><a href="javascript:void(0);">' + cannedResponses[i]["name"] + '</a></li>';
+    htmlListOfCannedResponses += '<li data-canned-response-id="' + i + '"><a href="javascript:void(0);">' + cannedResponses[i]["name"] + '</a><i class="fa fa-trash" data-canned-response-id="' + i + '"></i></li>';
   }
 
-  return HtmlListOfCannedResponses;
+  return htmlListOfCannedResponses;
 };
 
 // add the canned response button to the formatting bar
 function addCannedResponseButton() {
   $('.wmd-button-bar .wmd-button-row').append('<div class=\"wmd-spacer\" id=\"wmd-spacer3\"></div><button class=\"wmd-button wmd-canned-response-button\" id=\"wmd-canned-response-button\" title=\"Canned responses\" aria-label=\"Canned responses\"></button>');
-  $('.wmd-button-bar').append('<div class="canned-response-container" id="canned-response-container"><ul id="canned-responses-list">' + HtmlListOfCannedResponses + '</ul></div>');
+  $('.wmd-button-bar').append('<div class="canned-response-container" id="canned-response-container"><ul id="canned-responses-list">' + htmlListOfCannedResponses + '</ul></div>');
   $('.canned-response-container').hide();
 };
 
@@ -52,13 +52,11 @@ function newCannedResponse() {
 
   cannedResponses[Object.keys(cannedResponses).length] = { "name": cannedResponseName, "body": cannedResponseText }
   
-//  cannedResponses[cannedResponseName] = cannedResponseText
-  
   localStorage.setItem("canned_responses", JSON.stringify(cannedResponses));
 
   generateHtmlListOfCannedResponses();
 
-  $('#canned-responses-list').html(HtmlListOfCannedResponses);
+  $('#canned-responses-list').html(htmlListOfCannedResponses);
   
   $('#canned-response-container').toggle();
   $('.wmd-button-bar').toggleClass("active");
@@ -67,9 +65,26 @@ function newCannedResponse() {
 // put the canned response text into the textarea
 function prefillWithCannedResponse(text) {
   $('.wmd-input')[0].value += text;
-  $('#canned-response-container').toggle();
+  $('#canned-response-container').hide();
   $('.wmd-input').focus().keyup();
 };
+
+// delete a canned response
+function deleteCannedResponse(element) {
+  var cannedResponseId = element.target.getAttribute("data-canned-response-id");
+  cannedResponses = JSON.parse(localStorage.getItem("canned_responses"))
+  
+  delete cannedResponses[cannedResponseId]
+  
+  localStorage.setItem("canned_responses", JSON.stringify(cannedResponses))
+  
+  generateHtmlListOfCannedResponses();
+  
+  $('#canned-responses-list').html(htmlListOfCannedResponses);
+  
+  $('.canned-response-container').hide();
+  $('.wmd-button-bar').removeClass("active");
+}
 
 // collect all the other functions together and run them
 function runTheCannedResponseFunctions() {
@@ -80,9 +95,15 @@ function runTheCannedResponseFunctions() {
     $('.canned-response-container').toggle();
     $('.wmd-button-bar').toggleClass("active");
 
-    $('#canned-responses-list li').not('#new-canned-response').click(function() {
+    $('#canned-responses-list li .fa-trash').click(function(event) {
+      deleteCannedResponse(event);
+      
+      return false;
+    });
+    
+    $('#canned-responses-list li').not('#new-canned-response').not('#canned-responses-list li .fa-trash').click(function() {
       prefillWithCannedResponse(cannedResponses[$(this).attr("data-canned-response-id")]["body"]);
-      $('.wmd-button-bar').toggleClass("active");
+      $('.wmd-button-bar').removeClass("active");
     });
 
     $('#new-canned-response').click(function() {
