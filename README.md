@@ -2,7 +2,7 @@
 
 ## Features
 
-Codecademy makes your experience on Codecademy much better with the following features: 
+Codecademy Redesigned makes your experience on Codecademy much better with the following features: 
 
 - Adds a new Canned Responses feature into the forums for people who type the same thing a lot
 - Redesigns the Forums to have darker colors with more contrast, to strain the eye less 
