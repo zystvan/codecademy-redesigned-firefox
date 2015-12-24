@@ -1,3 +1,12 @@
+// add the `.cooked` class to the post preview so it gets rendered properly
+$('.d-editor-preview').addClass("cooked");
+
+
+
+/*******************
+Canned Responses
+*******************/
+
 // for use below, they need to be defined globally
 var cannedResponses,
     htmlListOfCannedResponses;
@@ -30,8 +39,8 @@ function generateHtmlListOfCannedResponses() {
 
 // add the canned response button to the formatting bar
 function addCannedResponseButton() {
-  $('.wmd-button-bar .wmd-button-row').append('<div class=\"wmd-spacer\" id=\"wmd-spacer3\"></div><button class=\"wmd-button wmd-canned-response-button\" id=\"wmd-canned-response-button\" title=\"Canned responses\" aria-label=\"Canned responses\"></button>');
-  $('.wmd-button-bar').append('<div class="canned-response-container" id="canned-response-container"><ul id="canned-responses-list">' + htmlListOfCannedResponses + '</ul></div>');
+  $('.d-editor-button-bar').append('<div class=\"d-editor-spacer\"></div><button class=\"ember-view btn no-text canned-response\" id=\"canned-response-button\" title=\"Canned responses\" aria-label=\"Canned responses\"><i class=\"fa fa-pencil-square-o\"></i></button>');
+  $('.d-editor-button-bar').append('<div class="canned-response-container" id="canned-response-container"><ul id="canned-responses-list">' + htmlListOfCannedResponses + '</ul></div>');
   $('.canned-response-container').hide();
 };
 
@@ -45,7 +54,7 @@ function newCannedResponse() {
 
   if (!cannedResponseName) {
     $('#canned-response-container').toggle();
-    $('.wmd-button-bar').toggleClass("active");
+    $('.d-editor-button-bar').toggleClass("active");
     
     return false;
   }
@@ -59,14 +68,14 @@ function newCannedResponse() {
   $('#canned-responses-list').html(htmlListOfCannedResponses);
   
   $('#canned-response-container').toggle();
-  $('.wmd-button-bar').toggleClass("active");
+  $('.d-editor-button-bar').toggleClass("active");
 };
 
 // put the canned response text into the textarea
 function prefillWithCannedResponse(text) {
-  $('.wmd-input')[0].value += text;
+  $('.d-editor-input')[0].value += text;
   $('#canned-response-container').hide();
-  $('.wmd-input').focus().keyup();
+  $('.d-editor-input').focus().keyup();
 };
 
 // delete a canned response
@@ -83,7 +92,7 @@ function deleteCannedResponse(element) {
   $('#canned-responses-list').html(htmlListOfCannedResponses);
   
   $('.canned-response-container').hide();
-  $('.wmd-button-bar').removeClass("active");
+  $('.d-editor-button-bar').removeClass("active");
 }
 
 // collect all the other functions together and run them
@@ -91,9 +100,9 @@ function runTheCannedResponseFunctions() {
   generateHtmlListOfCannedResponses();
   addCannedResponseButton();
 
-  $('#wmd-canned-response-button').click(function() {
+  $('#canned-response-button').click(function() {
     $('.canned-response-container').toggle();
-    $('.wmd-button-bar').toggleClass("active");
+    $('.d-editor-button-bar').toggleClass("active");
 
     $('#canned-responses-list li .fa-trash').click(function(event) {
       deleteCannedResponse(event);
@@ -103,7 +112,7 @@ function runTheCannedResponseFunctions() {
     
     $('#canned-responses-list li').not('#new-canned-response').not('#canned-responses-list li .fa-trash').click(function() {
       prefillWithCannedResponse(cannedResponses[$(this).attr("data-canned-response-id")]["body"]);
-      $('.wmd-button-bar').removeClass("active");
+      $('.d-editor-button-bar').removeClass("active");
     });
 
     $('#new-canned-response').click(function() {
@@ -123,7 +132,9 @@ var target = document.querySelector('#reply-control'),
 
 var observer = new MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
-    if ($('#wmd-canned-response-button').length < 1) {
+    if ($('#canned-response-button').length < 1) {
+      $('.d-editor-preview').addClass("cooked");
+      
       runTheCannedResponseFunctions();
     }
   });
