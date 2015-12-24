@@ -1,11 +1,101 @@
-// add the `.cooked` class to the post preview so it gets rendered properly
-$('.d-editor-preview').addClass("cooked");
+/***************************************************
+
+Add the exercise URL button
+
+***************************************************/
+
+
+var lessonType1 = "Python, Ruby, JavaScript, HTML & CSS, PHP, jQuery, Make an Interactive Website, Make a Website, Goals, APIs",
+    lessonType2 = "Learn the Command Line, Learn Java, Ruby on Rails: Authentication, Learn AngularJS, Learn SQL, Learn Git, Learn Rails, Make an Interactive Website: Projects, Make a Website: Projects",
+    forumPostRegex = /discuss.codecademy.com\/t/,
+    pageURL = window.location.href;
+
+btnInjection();
+// whenever we click on one forum post, it doesn't
+// reload the page, just changes the URL using AJAX
+// hence the need for this function
+setInterval(checkURLChange, 1000);
+
+function checkURLChange() {
+  var newPageURL = window.location.href;
+
+  if (newPageURL !== pageURL) {
+    pageURL = newPageURL;			
+
+    // wait for page to load before executing btnInjection
+    var interval = setInterval(function() {
+      if(document.readyState === "complete") {
+        try {
+          btnInjection(); clearInterval(interval);
+        } catch(e){}
+      }
+    }, 50);
+  }			
+}
+
+function btnInjection(){
+  if(!forumPostRegex.test(pageURL)) return;
+
+  var category = document.querySelector(".title-wrapper .badge-wrapper.bullet:first-child .badge-category").innerText,
+      hrefElmAll = document.querySelectorAll("a.badge-wrapper.bullet"),
+      hrefElm = hrefElmAll[hrefElmAll.length - 1],
+      href = "",
+      URL = "https://www.codecademy.com/courses/";
+
+  if (lessonType1.indexOf(category) > -1) {
+      href = hrefElm.getAttribute("href").split("/")[3];
+      URL += href;
+  }
+  else if (lessonType2.indexOf(category) > -1) {
+      href = hrefElm.getAttribute("href").split("/");
+      URL += href[2] + "#unit_"+href[3];
+  }
+  // meta or lounge categories with no linked forums
+  else URL = "";
+
+  var a, img, container, span;
+
+  if (URL !== "") {
+    try{				
+      container = document.querySelector(".title-wrapper > .ember-view .list-tags");
+
+      // link already exists
+      if(container.querySelector(".new_tab_exercise_link") !== null) return;
+
+      span = document.createElement("span"); // just to add some spacing from tag list
+      a = document.createElement("a");
+      i = document.createElement("i");
+
+      a.href = URL;
+      a.target = "_blank";
+      a.classList.add("new_tab_exercise_link");
+
+      i.id = "external-link-button";
+      i.classList.add("fa", "fa-external-link");
+      i.title = "Open exercise in new tab";
+
+      span.innerHTML = "&nbsp;";
+
+      a.appendChild(i);
+      container.appendChild(span);
+      container.appendChild(a);
+    } catch(e) {
+      console.error(e);
+    }
+  }
+}
 
 
 
-/*******************
+
+
+
+/***************************************************
+
 Canned Responses
-*******************/
+
+***************************************************/
+
 
 // for use below, they need to be defined globally
 var cannedResponses,
