@@ -94,6 +94,10 @@ body, .user-main .user-stream .item {
   background-color: #FAFAFA;
 }
 
+.moderator .topic-body {
+  background-color: rgba(255, 198, 0, 0.6) !important;
+}
+
 .topic-list > tbody > tr, .topic-list > tbody > tr:first-of-type, .topic-body, .topic-avatar, #topic-closing-info, hr, a.mention, blockquote, .quote .title {
   border-color: #BCBEC0 !important;
 }
