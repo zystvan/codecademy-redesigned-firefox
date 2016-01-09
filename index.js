@@ -10,13 +10,13 @@ var pageMod = require("sdk/page-mod");
 pageMod.PageMod({
   include: "*.codecademy.com",
   exclude: /.*production.*codecademy\.com.*/,
-  contentScriptFile: ["./jquery-1.11.1.js", "./site-updater.js"],
+  contentScriptFile: ["./essentials.js", "./site-updater.js"],
   contentStyleFile: "./site-updater.css"
 });
 // load some files whenever the user is on a forum
 pageMod.PageMod({
   include: "*.discuss.codecademy.com",
-  contentScriptFile: ["./jquery-1.11.1.js", "./forum-updater.js"],
+  contentScriptFile: ["./essentials.js", "./forum-updater.js"],
   contentStyleFile: "./forum-updater.css"
 });
 
