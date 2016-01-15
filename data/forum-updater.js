@@ -25,7 +25,7 @@
     HtmlListOfCannedResponses = '<li id="new-canned-response"><a href="javascript:void(0);">Create new canned response</a></li>';
 
     for (var i in cannedResponses) {
-      HtmlListOfCannedResponses += '<li data-canned-response-id="' + i + '"><a href="javascript:void(0);">' + cannedResponses[i]["name"] + '</a><i class="fa fa-trash" data-canned-response-id="' + i + '"></i></li>';
+      HtmlListOfCannedResponses += '<li data-canned-response-id="' + i + '"><a href="javascript:void(0);">' + cannedResponses[i]["name"] + '</a><span class="fa fa-trash" data-canned-response-id="' + i + '"></span></li>';
     }
 
     return HtmlListOfCannedResponses;
@@ -66,7 +66,8 @@
   function prefillWithCannedResponse(text) {
     qS('.d-editor-input').value += text;
     qS('#canned-response-container').hide();
-//    qS('.d-editor-input').focus().keyup();
+    /////////////////////////////////////////////////////// todo: figure out how to put focus back on the `<textarea>`
+    qS('.d-editor-button-bar').removeClass("active");
   }
 
   // delete a canned response
@@ -80,7 +81,7 @@
 
     generateHtmlListOfCannedResponses();
 
-    qS('#canned-responses-list').html(HtmlListOfCannedResponses);	  
+    qS('#canned-responses-list').innerHTML = HtmlListOfCannedResponses;
     qS('.canned-response-container').hide();
     qS('.d-editor-button-bar').removeClass("active");
   }
@@ -94,30 +95,38 @@
       qS('.canned-response-container').toggle();
       qS('.d-editor-button-bar').toggleClass("active");
       
+      var allCRs = document.querySelectorAll('#canned-responses-list li').not('#canned-responses-list li .fa-trash');
+      for (i in allCRs) {
+        if (!isNaN(i)) {
+          var CR = allCRs[i];
+          CR.addEventListener("click", function() {
+            prefillWithCannedResponse(cannedResponses[this.getAttribute("data-canned-response-id")]["body"]);
+          });
+        }
+      }
+      
       qS('#new-canned-response').addEventListener("click", function() {
           newCannedResponse();
       });
       
       if (qS('#canned-responses-list li .fa-trash')) {
-        var allCRTrashIcons = qSAll('#canned-responses-list li .fa-trash')
+        // can't use `qSAll()` for some reason, throws error. 
+        // would love to know why if someone can figure it out
+        var allCRTrashCans = document.querySelectorAll('#canned-responses-list li .fa-trash')
         
-        for (i in allCRTrashIcons) {
-          allCRTrashIcons[i].addEventListener("click", function(event) {
+        for (i in allCRTrashCans) {
+          var CRTrashCan = allCRTrashCans[i];
+          
+          // `onclick()` instead of `addEventListener()` because addeventlistener
+          // throws an error would love to know why for this too
+          CRTrashCan.onclick = function(event) {
             deleteCannedResponse(event);
             return false;
-          });
+          };
         }
       }
-      
-      var allCRs = qSAll('#canned-responses-list li').not('#new-canned-response').not('#canned-responses-list li .fa-trash');
-      for (i in allCRs) {
-        allCRs[i].addEventListener("click", function() {
-          prefillWithCannedResponse(cannedResponses[this.getAttribute("data-canned-response-id")]["body"]);
-          qS('.d-editor-button-bar').removeClass("active");
-        });
-      }
     });
-  }
+  };
 
   // detect when the text box is popped up, then run
   var target = qS('#reply-control'),
