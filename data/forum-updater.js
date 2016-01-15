@@ -66,7 +66,6 @@
   function prefillWithCannedResponse(text) {
     qS('.d-editor-input').value += text;
     qS('#canned-response-container').hide();
-    /////////////////////////////////////////////////////// todo: figure out how to put focus back on the `<textarea>`
     qS('.d-editor-button-bar').removeClass("active");
   }
 
@@ -95,6 +94,10 @@
       qS('.canned-response-container').toggle();
       qS('.d-editor-button-bar').toggleClass("active");
       
+      qS('#new-canned-response').addEventListener("click", function() {
+          newCannedResponse();
+      });
+      
       var allCRs = document.querySelectorAll('#canned-responses-list li').not('#canned-responses-list li .fa-trash');
       for (i in allCRs) {
         if (!isNaN(i)) {
@@ -104,10 +107,6 @@
           });
         }
       }
-      
-      qS('#new-canned-response').addEventListener("click", function() {
-          newCannedResponse();
-      });
       
       if (qS('#canned-responses-list li .fa-trash')) {
         // can't use `qSAll()` for some reason, throws error. 
