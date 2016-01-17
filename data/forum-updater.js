@@ -7,16 +7,17 @@
     // for use below, they need to be defined globally
     var cannedResponses,
         CRListElm, CRContainer,
-        ebb;
+        ebb,
+        key = "canned_responses";
 
     // get the canned responses
     function initializeCRArray() {
-        if (!localStorage.getItem("canned_responses")) {
+        if (!localStorage.getItem(key)) {
             cannedResponses = [];
-            localStorage.setItem("canned_responses", JSON.stringify(cannedResponses));
+            localStorage.setItem(key, JSON.stringify(cannedResponses));
         }
 
-        cannedResponses = JSON.parse(localStorage.getItem("canned_responses"));
+        cannedResponses = JSON.parse(localStorage.getItem(key));
     }
 
     function insertCRContainer() {
@@ -108,7 +109,7 @@
             "body": cannedResponseText
         });
 		
-        localStorage.setItem("canned_responses", JSON.stringify(cannedResponses));
+        localStorage.setItem(key, JSON.stringify(cannedResponses));
 
         insertNewCRInList(cannedResponseName, cannedResponseText);
     }
@@ -126,7 +127,7 @@
 
         cannedResponses.splice(index, 1);
 
-        localStorage.setItem("canned_responses", JSON.stringify(cannedResponses));
+        localStorage.setItem(key, JSON.stringify(cannedResponses));
 
         CRListElm.removeChild(li);
         CRContainer.hide();
