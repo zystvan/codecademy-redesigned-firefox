@@ -73,7 +73,6 @@
 
     // add the canned response button to the formatting bar
     function addCannedResponseButton() {
-//        ebb.innerHTML += '<div class=\"d-editor-spacer\"></div><button class=\"ember-view btn no-text canned-response\" id=\"canned-response-button\" title=\"Canned responses\" aria-label=\"Canned responses\"><i class=\"fa fa-pencil-square-o\"></i></button>'
       var spacer = document.createElement('div'),
           button = document.createElement('button'),
           i = document.createElement('i');
@@ -257,7 +256,7 @@
                 i.classList.add("fa", "fa-external-link");
                 i.title = "Open exercise in new tab";
 
-                span.innerHTML = "&nbsp;";
+                span.textContent = " ";
 
                 a.appendChild(i);
                 container.appendChild(span);
