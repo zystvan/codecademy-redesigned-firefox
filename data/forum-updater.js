@@ -62,6 +62,7 @@
             spanDel = document.createElement("SPAN");
 
         spanName.innerHTML = name;
+        spanName.classList.add("name");
         spanDel.classList.add("fa");
         spanDel.classList.add("fa-trash");
 

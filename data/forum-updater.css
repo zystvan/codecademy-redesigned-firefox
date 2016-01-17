@@ -38,11 +38,27 @@ body, .user-main .user-stream .item {
   background-color: #FAFAFA;
 }
 
+.user-menu .menu-links-row a {
+  transition: all linear 0.15s;
+}
+
+.user-menu .menu-links-row a:hover {
+  background-color: #E2EDF4;
+}
+
 .moderator .topic-body {
   background-color: rgba(255, 198, 0, 0.4) !important;
 }
 
-.topic-list > tbody > tr, .topic-list > tbody > tr:first-of-type, .topic-body, .topic-avatar, #topic-closing-info, hr, a.mention, blockquote, .quote .title {
+.topic-list > tbody > tr,
+.topic-list > tbody > tr:first-of-type,
+.topic-body,
+.topic-avatar,
+#topic-closing-info,
+hr,
+a.mention,
+blockquote,
+.quote .title {
   border-color: #BCBEC0 !important;
 }
 
@@ -76,7 +92,7 @@ body, .user-main .user-stream .item {
   color: #1E3F57;
 }
 
-.cooked p {
+.cooked p, .cooked li {
   color: #4A4A4C !important;
 }
 
@@ -150,7 +166,7 @@ aside.onebox, a.mention, blockquote, .quote .title, pre, code {
 }
 
 .canned-response-container ul {
-  padding: 0 4px;
+  padding: 5px 4px 0;
   margin: 0;
 }
 
@@ -166,6 +182,10 @@ aside.onebox, a.mention, blockquote, .quote .title, pre, code {
           user-select: none;
 }
 
+.canned-response-container li:hover {
+  background-color: #F8F9F9 !important;
+}
+
 .canned-response-container .fa-trash {
   position: absolute;
   top: 6px;
@@ -173,13 +193,14 @@ aside.onebox, a.mention, blockquote, .quote .title, pre, code {
 }
 
 .canned-response-container .fa-trash:hover {
-  color: #F65A5B;
+  color: #F05B5C;
 }
 
 .canned-response-container li:hover, .select2-results li:hover {
   background-color: #F1F2F2;
 }
 
-.canned-response-container li a {
+.canned-response-container li .name,
+.canned-response-container #new-canned-response {
   color: #4080AC;
 }
