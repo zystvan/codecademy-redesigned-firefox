@@ -182,10 +182,6 @@ aside.onebox, a.mention, blockquote, .quote .title, pre, code {
           user-select: none;
 }
 
-.canned-response-container li:hover {
-  background-color: #F8F9F9 !important;
-}
-
 .canned-response-container .fa-trash {
   position: absolute;
   top: 6px;
@@ -196,8 +192,10 @@ aside.onebox, a.mention, blockquote, .quote .title, pre, code {
   color: #F05B5C;
 }
 
-.canned-response-container li:hover, .select2-results li:hover {
-  background-color: #F1F2F2;
+.canned-response-container li:hover,
+.select2-results li:hover,
+.user-menu .notifications li:hover {
+  background-color: #F1F2F2 !important;
 }
 
 .canned-response-container li .name,

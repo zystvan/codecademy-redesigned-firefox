@@ -73,7 +73,21 @@
 
     // add the canned response button to the formatting bar
     function addCannedResponseButton() {
-        ebb.innerHTML += '<div class=\"d-editor-spacer\"></div><button class=\"ember-view btn no-text canned-response\" id=\"canned-response-button\" title=\"Canned responses\" aria-label=\"Canned responses\"><i class=\"fa fa-pencil-square-o\"></i></button>'
+//        ebb.innerHTML += '<div class=\"d-editor-spacer\"></div><button class=\"ember-view btn no-text canned-response\" id=\"canned-response-button\" title=\"Canned responses\" aria-label=\"Canned responses\"><i class=\"fa fa-pencil-square-o\"></i></button>'
+      var spacer = document.createElement('div'),
+          button = document.createElement('button'),
+          i = document.createElement('i');
+      
+      spacer.classList.add("d-editor-spacer");
+      button.classList.add("ember-view", "btn", "no-text", "canned-response");
+      button.setAttribute("id", "canned-response-button");
+      button.setAttribute("title", "Canned responses");
+      button.setAttribute("aria-label", "Canned responses");
+      i.classList.add("fa", "fa-pencil-square-o")
+      
+      ebb.appendChild(spacer);
+      button.appendChild(i);
+      ebb.appendChild(button);
     }
 
     // create a new canned response
