@@ -267,7 +267,7 @@
         }
     }
 
-    // userButton.js; not every discuss page is user page. So, try-block is needed
+    // insert user button; not every discuss page is user page. So, try-block is needed
     try {
         var elm = qS(".user-main .about .details .primary h1"),
             url = "https://www.codecademy.com/" + elm.textContent.split("<")[0],

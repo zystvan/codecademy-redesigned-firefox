@@ -5,7 +5,7 @@ var pageMod = require("sdk/page-mod");
 
 // create some page-mods
 // load some files everywhere on codecademy
-// profile-updater.js is only supposed to be for profiles but theres no way
+// profile-updater.js is only supposed to be for profiles but there's no way
 // to detect whether you're on someones profile or not that i know of :/
 pageMod.PageMod({
   include: "*.codecademy.com",
