@@ -74,6 +74,10 @@ blockquote,
   color: white;
 }
 
+.external-user-link {
+  margin-left: 8px;
+}
+
 .cooked code {
   font-family: 'Oxygen Mono', monospace;
 }

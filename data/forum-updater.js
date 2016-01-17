@@ -31,7 +31,7 @@
             span = document.createElement("SPAN");
 
         li.setAttribute("id", "new-canned-response");
-        span.innerHTML = "Create new canned response";
+        span.textContent = "Create new canned response";
 
         li.appendChild(span);
 
@@ -61,7 +61,7 @@
             spanName = document.createElement("SPAN"),
             spanDel = document.createElement("SPAN");
 
-        spanName.innerHTML = name;
+        spanName.textContent = name;
         spanName.classList.add("name");
         spanDel.classList.add("fa");
         spanDel.classList.add("fa-trash");
@@ -221,7 +221,7 @@
     function btnInjection() {
         if (!forumPostRegex.test(pageURL)) return;
 
-        var category = qS(".title-wrapper .badge-wrapper.bullet:first-child .badge-category").innerText,
+        var category = qS(".title-wrapper .badge-wrapper.bullet:first-child .badge-category").textContent,
             hrefElmAll = qSAll("a.badge-wrapper.bullet"),
             hrefElm = hrefElmAll[hrefElmAll.length - 1],
             href = hrefElm.getAttribute("href").split("/"),
@@ -269,12 +269,20 @@
 
     // userButton.js; not every discuss page is user page. So, try-block is needed
     try {
-        var id = chrome.runtime.id,
-            elm = qS(".user-main .about .details .primary h1"),
-            url = "https://www.codecademy.com/" + elm.innerHTML.split("<")[0];
-
-        elm.insertAdjacentHTML("beforeend", "<a target='_blank' href=" + url + "> <img id='userLink' src='chrome-extension://" + id + "/ntwhite.png' alt='CC Profile' title='Opens the users&#39; CC Profile'/> </a>");
-        document.body.insertAdjacentHTML("afterend", '<style>#userLink{height: 20px;width: 20px;margin-top: -5px;}#userLink:hover {	cursor: pointer;content:url("chrome-extension://' + id + '/ntgreen.png");}</style>');
+        var elm = qS(".user-main .about .details .primary h1"),
+            url = "https://www.codecademy.com/" + elm.textContent.split("<")[0],
+            a = document.createElement('a'),
+            i = document.createElement('i');
+      
+        a.setAttribute("target", "_blank");
+        a.setAttribute("href", url);
+        a.classList.add("external-user-link");
+        a.setAttribute("aria-hidden", "true");
+        a.setAttribute("title", "Open this user profile on the main site");
+        i.classList.add("fa", "fa-external-link");
+        
+        a.appendChild(i);
+        elm.appendChild(a);
     } catch (e) {
         console.log("Error", e);
     }
