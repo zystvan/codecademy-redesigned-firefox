@@ -16,9 +16,28 @@ getJSON(userDataUrl, function(d) {
 
 var userUsername = window.location.pathname.replace("/", ""),
     userDiscussProfileLink = "http://discuss.codecademy.com/users/" + userUsername + "/activity",
-    userName = qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3').textContent;
+    userName = qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3').textContent,
+    h3 = qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3'),
+    a = document.createElement('a');
 
-qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3').innerHTML = '<a href="' + userDiscussProfileLink + '" title="Open Discuss profile" class="discuss-link">' + userName + '</a>';
+a.setAttribute("href", userDiscussProfileLink);
+a.setAttribute("title", "Open Discuss profile");
+a.classList.add("discuss-link");
+a.textContent = userName;
+h3.textContent = "";
+
+h3.appendChild(a);
 
 // add a link in the footer to the github repo with some old group posts
-qS('#footer #footer__main .grid-row #footer__company__links').innerHTML += '<br><a href="https://github.com/A-J-C/CodecademyGroups" class="saved-group-posts-link">Codecademy Group posts saved on GitHub</a>';
+var footer = qS('#footer #footer__main .grid-row #footer__company__links'),
+    br = document.createElement('br'),
+    br2 = document.createElement('br'),
+    a2 = document.createElement('a');
+
+a2.setAttribute("href", "https://github.com/A-J-C/CodecademyGroups");
+a2.classList.add("saved-group-posts-link");
+a2.textContent = "Codecademy Group posts saved on GitHub";
+
+footer.appendChild(br);
+footer.appendChild(br2);
+footer.appendChild(a2);
