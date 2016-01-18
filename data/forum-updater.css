@@ -101,7 +101,7 @@ blockquote,
 }
 
 .cooked a:not(.mention), .cooked aside.onebox .onebox-body a {
-  color: #F65A5B;/*****************************************************  find out what we're changing this color to  **************************************/
+  color: #F65A5B;
 }
 
 .cooked a:not(.mention):hover {
