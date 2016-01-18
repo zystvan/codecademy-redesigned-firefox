@@ -18,7 +18,7 @@ var userUsername = window.location.pathname.replace("/", ""),
     userDiscussProfileLink = "http://discuss.codecademy.com/users/" + userUsername + "/activity",
     userName = qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3').textContent;
 
-qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3').innerHTML = '<a href="' + userDiscussProfileLink + '" title="Open user profile in Discuss">' + userName + '</a>';
+qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3').innerHTML = '<a href="' + userDiscussProfileLink + '" title="Open Discuss profile" class="discuss-link">' + userName + '</a>';
 
 // add a link in the footer to the github repo with some old group posts
-qS('#footer #footer__main .grid-row #footer__company__links').innerHTML += '<br><a href="https://github.com/A-J-C/CodecademyGroups">Codecademy Group posts saved on GitHub</a>';
+qS('#footer #footer__main .grid-row #footer__company__links').innerHTML += '<br><a href="https://github.com/A-J-C/CodecademyGroups" class="saved-group-posts-link">Codecademy Group posts saved on GitHub</a>';
