@@ -62,6 +62,10 @@ blockquote,
   border-color: #BCBEC0 !important;
 }
 
+#topic-title h1 {
+  line-height: 1.4em !important;
+}
+
 #external-link-button {
   display: inline-block;
   width: 15px;
