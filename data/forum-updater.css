@@ -70,10 +70,6 @@ blockquote,
   transition: all 0.25s;
 }
 
-#external-link-button:hover {
-  color: white;
-}
-
 .external-user-link {
   margin-left: 8px;
 }
@@ -199,7 +195,9 @@ aside.onebox, a.mention, blockquote, .quote .title, pre, code {
 .canned-response-container li:hover,
 .select2-results li:hover,
 .user-menu .notifications li:hover,
-.user-menu .notifications li a:hover {
+.user-menu .notifications li a:hover,
+.menu-panel ul.menu-links li a:hover,
+.menu-panel ul li.heading a:hover{
   background-color: #F1F2F2 !important;
 }
 
