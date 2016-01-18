@@ -52,12 +52,12 @@
       
         for (i in cannedResponses) {
           currentCR = cannedResponses[i]
-          insertNewCRInList(currentCR["name"], currentCR["body"], i)
+          insertNewCRInList(currentCR["name"], currentCR["body"])
         }
     }
 
     // generate the list of canned responses
-    function insertNewCRInList(name, body, id) {
+    function insertNewCRInList(name, body) {
         var li = document.createElement("LI"),
             spanName = document.createElement("SPAN"),
             spanDel = document.createElement("SPAN");
