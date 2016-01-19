@@ -8,16 +8,16 @@
     var cannedResponses,
         CRListElm, CRContainer,
         ebb,
-        key = "canned_responses";
+        KEY = "canned_responses";
 
     // get the canned responses
     function initializeCRArray() {
-        if (!localStorage.getItem(key)) {
+        if (!localStorage.getItem(KEY)) {
             cannedResponses = [];
-            localStorage.setItem(key, JSON.stringify(cannedResponses));
+            localStorage.setItem(KEY, JSON.stringify(cannedResponses));
         }
 
-        cannedResponses = JSON.parse(localStorage.getItem(key));
+        cannedResponses = JSON.parse(localStorage.getItem(KEY));
     }
 
     function insertCRContainer() {
@@ -109,7 +109,7 @@
             "body": cannedResponseText
         });
 		
-        localStorage.setItem(key, JSON.stringify(cannedResponses));
+        localStorage.setItem(KEY, JSON.stringify(cannedResponses));
 
         insertNewCRInList(cannedResponseName, cannedResponseText);
     }
@@ -127,7 +127,7 @@
 
         cannedResponses.splice(index, 1);
 
-        localStorage.setItem(key, JSON.stringify(cannedResponses));
+        localStorage.setItem(KEY, JSON.stringify(cannedResponses));
 
         CRListElm.removeChild(li);
         CRContainer.hide();
