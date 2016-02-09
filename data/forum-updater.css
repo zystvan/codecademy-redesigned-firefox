@@ -66,12 +66,16 @@ blockquote,
   line-height: 1.4em !important;
 }
 
-#external-link-button {
+.external-link-button {
   display: inline-block;
   width: 15px;
   height: 15px;
   color: #204056;
-  transition: all 0.25s;
+}
+
+.docked .d-header .title-wrapper > .ember-view .external-link-button {
+  position: relative;
+  top: 4px;
 }
 
 .external-user-link {

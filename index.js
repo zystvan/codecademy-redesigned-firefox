@@ -8,8 +8,7 @@ var pageMod = require("sdk/page-mod");
 // profile-updater.js is only supposed to be for profiles but there's no way
 // to detect whether you're on someones profile or not that i know of :/
 pageMod.PageMod({
-  include: "*.codecademy.com",
-  exclude: /.*production.*codecademy\.com.*/,
+  include: "https://www.codecademy.com",
   contentScriptFile: ["./essentials.js", "./site-updater.js"],
   contentStyleFile: "./site-updater.css"
 });
@@ -22,6 +21,6 @@ pageMod.PageMod({
 
 exports.onUnload = function(reason) {
   if (reason == "uninstall" || reason == "disable") {
-    observer.disconnect();
+    bodyListener.disconnect();
   }
 };
