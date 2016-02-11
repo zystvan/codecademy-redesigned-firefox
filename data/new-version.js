@@ -1,5 +1,7 @@
 // cre => codecademy redesigned extension
-if (!localStorage.getItem("cre_710_notification_seen")) {
+if (!localStorage.getItem("cre_710_notification_seen") || localStorage.getItem("cre_710_notification_seen") !== "true") {
+  localStorage.setItem("cre_710_notification_seen", true);
+  
   var body = qS('body'),
       div = document.createElement('div'),
       div2 = document.createElement('div'),
@@ -45,8 +47,6 @@ if (!localStorage.getItem("cre_710_notification_seen")) {
   div3.addEventListener("click", function() {
     div.setAttribute("style", "display: none;");
   });
-
-  localStorage.setItem("cre_710_notification_seen", true);
   
   /*
   ^ the above code generates this html:
