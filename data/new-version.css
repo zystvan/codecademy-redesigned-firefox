@@ -1,0 +1,59 @@
+.new-version > * {
+  z-index: 9999;
+}
+
+.new-version .popup-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1E3F57;
+  opacity: 0.95;
+}
+
+.new-version .popup-close {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.new-version .popup {
+  box-sizing: border-box;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+/*  width: 400px;*/
+/*  height: 230px;*/
+  width: 500px;
+  height: auto;
+  background-color: #FAFAFA;
+  font-family: 'Oxygen', sans-serif;
+  text-align: center;
+  padding: 15px;
+/*  margin: -115px 0 0 -200px;*/
+  transform: translate(-50%, -50%);
+}
+
+.new-version h1 {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 36px;
+  padding: 0px;
+  margin: 21px 0px;
+}
+
+.new-version .popup h2 {
+  margin-bottom: 16px;
+}
+
+.new-version li {
+  text-align: left;
+  margin: 4px 0;
+}

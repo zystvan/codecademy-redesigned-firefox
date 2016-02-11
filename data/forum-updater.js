@@ -5,6 +5,9 @@ function forumUpdater() {
         setTimeout(forumUpdater, 500);
         return false;
     }
+  
+    // show little popup notification thingy if they haven't used this version yet
+    
 
     // for use below, they need to be defined globally
     var cannedResponses,
