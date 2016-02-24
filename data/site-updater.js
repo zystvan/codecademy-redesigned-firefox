@@ -2,9 +2,9 @@
 var userDataUrl = window.location.href.substr(8).replace("/", "/api/v1/users/").toString();
 userDataUrl = window.location.protocol + "//" + userDataUrl;
 
-getJSON(userDataUrl, function(d) {
-  unsafeWindow.CCDATA.user = d;
-  
+fetch(userDataUrl).then(function(response) {
+  return response.json();
+}).then(function(json) {
   var article = document.createElement('article'),
       div = document.createElement('div'),
       div2 = document.createElement('div'),
@@ -23,15 +23,15 @@ getJSON(userDataUrl, function(d) {
   div2.classList.add("grid-row", "profile-time");
   div3.classList.add("grid-col-4", "grid-col--align-center");
   h3.classList.add("padding-right--quarter");
-  h3.textContent = unsafeWindow.CCDATA.user.points_today;
+  h3.textContent = json.points_today;
   small.textContent = "points today";
   div4.classList.add("grid-col-4", "grid-col--align-center");
   h32.classList.add("padding-right--quarter");
-  h32.textContent = unsafeWindow.CCDATA.user.streak_hash.max_count;
+  h32.textContent = json.streak_hash.max_count;
   small2.textContent = "day best streak";
   div5.classList.add("grid-col-4", "grid-col--align-center");
   h33.classList.add("padding-right--quarter");
-  h33.textContent = unsafeWindow.CCDATA.user.points_hash.best_points_day;
+  h33.textContent = json.points_hash.best_points_day;
   small3.textContent = "best points day";
   
   div3.appendChild(h3);
@@ -71,19 +71,21 @@ getJSON(userDataUrl, function(d) {
   */
 });
 
-var userUsername = window.location.pathname.replace("/", ""),
-    userDiscussProfileLink = "http://discuss.codecademy.com/users/" + userUsername + "/activity",
-    userName = qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3').textContent,
-    h34 = qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3'),
-    a = document.createElement('a');
+if (qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3')) {
+  var userUsername = window.location.pathname.replace("/", ""),
+      userDiscussProfileLink = "https://discuss.codecademy.com/users/" + userUsername + "/activity",
+      userName = qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3').textContent,
+      h34 = qS('.grid-col-6.grid-col--center.grid-col--align-center.grid-col--extra-margin-top h3'),
+      a = document.createElement('a');
 
-a.setAttribute("href", userDiscussProfileLink);
-a.setAttribute("title", "Open Discuss profile");
-a.classList.add("discuss-link");
-a.textContent = userName;
-h34.textContent = "";
+  a.setAttribute("href", userDiscussProfileLink);
+  a.setAttribute("title", "Open Discuss profile");
+  a.classList.add("discuss-link");
+  a.textContent = userName;
+  h34.textContent = "";
 
-h34.appendChild(a);
+  h34.appendChild(a);
+}
 
 // add a link in the footer to the github repo with some old group posts
 var footer = qS('#footer #footer__main .grid-row #footer__company__links'),
