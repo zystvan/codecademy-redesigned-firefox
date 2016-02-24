@@ -50,7 +50,6 @@ var adminUpdater = function() {
         tr.appendChild(td);
         tbody.appendChild(tr);
         CCRedesignedTable.appendChild(tbody);
-//        CCRedesignedTable.insertBefore(tbody, CCRedesignedTable.nextSibling)
       }
     }
   });
