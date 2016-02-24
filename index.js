@@ -7,13 +7,9 @@ pageMod.PageMod({
   contentStyleFile: ["./site-updater.css", "./new-version.css"]
 });
 pageMod.PageMod({
-  include: "*.discuss.codecademy.com",
-  contentScriptFile: ["./essentials.js", "./forum-updater.js", "./new-version.js"],
+  include: /.*discuss.codecademy.com.*/,
+  contentScriptFile: ["./essentials.js", "./forum-updater.js", "./admin.js", "./new-version.js"],
   contentStyleFile: ["./forum-updater.css", "./new-version.css"]
-});
-pageMod.PageMod({
-  include: /.*discuss.codecademy.com\/admin/,
-  contentScriptFile: "./admin.js"
 });
 
 exports.onUnload = function(reason) {
