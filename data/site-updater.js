@@ -1,9 +1,3 @@
-// make the notification bell link to discuss.codecademy.com/username/notifications
-if (unsafeWindow.CCDATA && unsafeWindow.CCDATA.current_user) {
-  var username = unsafeWindow.CCDATA.current_user.username;
-  qS('.index__bell___2tSp1 a, .header__nav__link--notifications a').setAttribute("href", "http://discuss.codecademy.com/users/" + username + "/notifications");
-}
-
 // add extra data & a link to the users' discuss profile to user profiles on the main site
 var userDataUrl = window.location.href.substr(8).replace("/", "/api/v1/users/").toString();
 userDataUrl = window.location.protocol + "//" + userDataUrl;

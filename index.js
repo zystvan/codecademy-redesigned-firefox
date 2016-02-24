@@ -11,6 +11,10 @@ pageMod.PageMod({
   contentScriptFile: ["./essentials.js", "./forum-updater.js", "./new-version.js"],
   contentStyleFile: ["./forum-updater.css", "./new-version.css"]
 });
+pageMod.PageMod({
+  include: /.*discuss.codecademy.com\/admin/,
+  contentScriptFile: "./admin.js"
+});
 
 exports.onUnload = function(reason) {
   if (reason == "uninstall" || reason == "disable") {
