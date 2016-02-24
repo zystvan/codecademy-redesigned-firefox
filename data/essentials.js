@@ -6,8 +6,7 @@ function perNode(prop){
 	};
 }
 
-var props = ["toggle", "toggleClass", "addClass", "removeClass",
-			"setAttribute", "insertAdjacentHTML", "hide", "focus", "keyup"];
+var props = ["toggle", "setAttribute", "insertAdjacentHTML", "hide", "focus", "keyup"];
 
 props.forEach(perNode);
 
@@ -17,22 +16,6 @@ Node.prototype.hide = function (){
 
 window.qS = document.querySelector.bind(document);
 window.qSAll = document.querySelectorAll.bind(document);
-
-window.getJSON = function(url, callback){
-    var request = new XMLHttpRequest();
-    request.open('GET', url, true);
-    
-    request.onload = function() {
-		if (request.status >= 200 && request.status < 400) {
-		  // Success!
-		  var data = JSON.parse(request.responseText);
-		  callback(data);
-		}
-		else ;  // We reached our target server, but it returned an error
-    };
-      
-     request.send();
-};
 
 // one function for both fadeIn/fadeOut
 window.fade = function(el, fadeInFlag) {
@@ -56,23 +39,9 @@ Node.prototype.toggle = function(){
   else this.style.display = "none";
 };
 
-Node.prototype.removeClass = function(cls){
-  this.classList.remove(cls);
-};
-
-Node.prototype.addClass = function(cls){
-	console.log(this.className);
-  this.classList.add(cls);
-};
-
 Node.prototype.hasClass = function(cls){
     if (this.classList) return this.classList.contains(cls);
     else return new RegExp('(^| )' + cls + '( |$)', 'gi').test(this.classname);
-};
-
-Node.prototype.toggleClass = function (cls){
-    if(this.hasClass(cls)) this.classList.remove(cls);
-    else this.classList.add(cls);
 };
 
 // jquery equivlent of .not

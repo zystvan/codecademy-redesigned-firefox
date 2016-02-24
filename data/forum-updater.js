@@ -118,7 +118,7 @@ function forumUpdater() {
     function prefillWithCannedResponse(text) {
         qS('.d-editor-input').value += text;
         CRContainer.hide();
-        ebb.removeClass("active");
+        ebb.classList.remove("active");
     }
 
     // delete a canned response
@@ -160,7 +160,7 @@ function forumUpdater() {
 
         qS(crbID).addEventListener("click", function() {
             CRContainer.toggle();
-            ebb.toggleClass("active");
+            ebb.classList.toggle("active");
         });
     };
 
@@ -283,7 +283,7 @@ function forumUpdater() {
                     userButtonInjection(userLinkNode);
 
                 if (!crb && dep) {
-                    dep.addClass('cooked');
+                    dep.classList.add("cooked");
 
                     runTheCannedResponseFunctions();
                 }
